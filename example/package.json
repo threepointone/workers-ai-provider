@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify"
+  },
+  "dependencies": {
+    "ai": "^3.2.40",
+    "fetch-event-stream": "^0.1.5",
+    "hono": "^4.5.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240725.0",
+    "wrangler": "^3.67.1"
+  }
+}

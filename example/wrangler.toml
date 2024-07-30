@@ -1,0 +1,6 @@
+name = "workers-vercel-ai-sdk"
+main = "src/index.ts"
+compatibility_date = "2024-05-29"
+
+[ai]
+binding = "AI"

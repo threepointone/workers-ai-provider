@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    permissions:
+      contents: write
+
+    if: ${{ github.repository_owner == 'threepointone' }}
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: oven-sh/setup-bun@v1
+
+      - run: bun install
+
+      - run: bun run copy-readme
+
+      - run: bun run build
+
+      - id: changesets
+        uses: changesets/action@v1
+        with:
+          version: bun .github/changeset-version.ts
+          publish: bun ./.github/changeset-publish.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKERS_AI_PROVIDER_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

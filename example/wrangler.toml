@@ -1,4 +1,4 @@
-name = "workers-vercel-ai-sdk"
+name = "workers-ai-provider"
 main = "src/index.ts"
 compatibility_date = "2024-05-29"
 

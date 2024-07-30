@@ -26,7 +26,7 @@ Then in your Worker, import the factory function and create a new AI provider:
 
 ```ts
 // index.ts
-import { createWorkersAI } from "workers-vercel-ai-sdk";
+import { createWorkersAI } from "workers-ai-provider";
 import * as ai from "ai";
 
 export default {

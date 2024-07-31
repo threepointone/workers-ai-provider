@@ -1,5 +1,11 @@
 # workers-ai-provider
 
+## 0.0.5
+
+### Patch Changes
+
+- [`4e967af`](https://github.com/threepointone/workers-ai-provider/commit/4e967af7a840933983120e03fd3163b15f96c48c) Thanks [@threepointone](https://github.com/threepointone)! - fix readme, stray console log
+
 ## 0.0.4
 
 ### Patch Changes

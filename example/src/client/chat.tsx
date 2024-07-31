@@ -1,5 +1,3 @@
-// browser
-
 import { useChat } from "ai/react";
 
 type ChatProps = {

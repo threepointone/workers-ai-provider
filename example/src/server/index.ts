@@ -1,5 +1,3 @@
-// server
-
 import { convertToCoreMessages, streamText } from "ai";
 import { createWorkersAI } from "../../../src";
 

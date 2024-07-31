@@ -29,12 +29,16 @@ Then in your Worker, import the factory function and create a new AI provider:
 import { createWorkersAI } from "workers-ai-provider";
 import { streamText } from "ai";
 
+type Env = {
+  AI: Ai;
+};
+
 export default {
-  fetch(req: Request, env: Env) {
+  async fetch(req: Request, env: Env) {
     const workersai = createWorkersAI({ binding: env.AI });
     // Use the AI provider to interact with the Vercel AI SDK
     // Here, we generate a chat stream based on a prompt
-    const text = streamText({
+    const text = await streamText({
       model: workersai("@cf/meta/llama-2-7b-chat-int8"),
       messages: [
         {

@@ -176,7 +176,6 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
         >({
           async transform(chunk, controller) {
             const chunkToText = decoder.decode(chunk as unknown as Uint8Array);
-            console.log("ctt", chunkToText);
             const chunks = events(new Response(chunkToText));
             for await (const singleChunk of chunks) {
               if (!singleChunk.data) {

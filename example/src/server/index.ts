@@ -20,11 +20,7 @@ export default {
         model: workersai("@cf/meta/llama-3-8b-instruct"),
         messages: convertToCoreMessages(messages),
       });
-      return result.toDataStreamResponse({
-        headers: {
-          "Transfer-Encoding": "chunked",
-        },
-      });
+      return result.toDataStreamResponse();
     }
 
     return new Response("Not Found", { status: 404 });

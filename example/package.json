@@ -5,13 +5,15 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "ai": "^3.2.40",
-    "fetch-event-stream": "^0.1.5",
-    "hono": "^4.5.3",
-    "zod": "^3.23.8"
+    "ai": "^3.2.41",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240725.0",
-    "wrangler": "^3.67.1"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "esbuild": "^0.23.0",
+    "wrangler": "3.67.1"
   }
 }

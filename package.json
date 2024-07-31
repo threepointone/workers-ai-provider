@@ -5,6 +5,15 @@
   "version": "0.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/threepointone/workers-ai-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/threepointone/workers-ai-provider/issues"
+  },
+  "author": "Sunil Pai <spai@cloudflare.com>",
+  "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsup src/index.ts --dts --sourcemap --format esm --target es2020"
   },
@@ -20,6 +29,16 @@
     "README.md",
     "LICENSE",
     "package.json"
+  ],
+  "keywords": [
+    "workers",
+    "cloudflare",
+    "ai",
+    "vercel",
+    "sdk",
+    "provider",
+    "chat",
+    "serverless"
   ],
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",

@@ -161,6 +161,8 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
   ): Promise<Awaited<ReturnType<LanguageModelV1["doStream"]>>> {
     const { args, warnings } = this.getArgs(options);
 
+    const decoder = new TextDecoder();
+
     const response = (await this.config.binding.run(args.model, {
       messages: args.messages,
       stream: true,
@@ -173,9 +175,8 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
           LanguageModelV1StreamPart
         >({
           async transform(chunk, controller) {
-            const chunkToText = new TextDecoder().decode(
-              chunk as unknown as Uint8Array
-            );
+            const chunkToText = decoder.decode(chunk as unknown as Uint8Array);
+            console.log("ctt", chunkToText);
             const chunks = events(new Response(chunkToText));
             for await (const singleChunk of chunks) {
               if (!singleChunk.data) {
@@ -193,7 +194,7 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
                 return;
               }
               const data = JSON.parse(singleChunk.data);
-              console.log("data", data);
+
               controller.enqueue({
                 type: "text-delta",
                 textDelta: data.response ?? "DATALOSS",
@@ -253,8 +254,6 @@ function prepareToolsAndToolChoice(
   }
 
   const type = toolChoice.type;
-
-  console.log(mode, type);
 
   switch (type) {
     case "auto":

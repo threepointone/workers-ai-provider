@@ -11,7 +11,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    if (/^\/api\/chat\/[_\-A-Za-z]*/.exec(url.pathname)) {
+    if (
+      request.method === "POST" &&
+      /^\/api\/chat\/[_\-A-Za-z]*/.exec(url.pathname)
+    ) {
       const workersai = createWorkersAI({ binding: env.AI });
       const { messages } = await request.json<{
         messages: Parameters<typeof convertToCoreMessages>[0];

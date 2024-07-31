@@ -1,5 +1,5 @@
 import { convertToCoreMessages, streamText } from "ai";
-import { createWorkersAI } from "../../../src";
+import { createWorkersAI } from "workers-ai-provider/src";
 
 export interface Env {
   AI: Ai;
@@ -24,6 +24,6 @@ export default {
       return result.toDataStreamResponse();
     }
 
-    return new Response("Not Found", { status: 404 });
+    return new Response("Not Found!!", { status: 404 });
   },
 } satisfies ExportedHandler<Env>;

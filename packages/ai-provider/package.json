@@ -1,0 +1,45 @@
+{
+  "name": "workers-ai-provider",
+  "description": "Workers AI Provider for the vercel AI SDK",
+  "type": "module",
+  "version": "0.0.5",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/threepointone/workers-ai-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/threepointone/workers-ai-provider/issues"
+  },
+  "author": "Sunil Pai <spai@cloudflare.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && tsup src/index.ts --dts --sourcemap --format esm --target es2020"
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "^0.0.14",
+    "ai": "^3.2.40",
+    "fetch-event-stream": "^0.1.5",
+    "zod": "^3.23.8"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json"
+  ],
+  "keywords": [
+    "workers",
+    "cloudflare",
+    "ai",
+    "vercel",
+    "sdk",
+    "provider",
+    "chat",
+    "serverless"
+  ],
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240725.0"
+  }
+}

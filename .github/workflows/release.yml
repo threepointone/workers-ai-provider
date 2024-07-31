@@ -19,17 +19,17 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: oven-sh/setup-bun@v1
+      - uses: actions/setup-node@v4
 
-      - run: bun install
+      - run: npm run install
 
-      - run: bun run build
+      - run: npm run build
 
       - id: changesets
         uses: changesets/action@v1
         with:
-          version: bun .github/changeset-version.ts
-          publish: bun ./.github/changeset-publish.ts
+          version: npx changeset version && npm install
+          publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.WORKERS_AI_PROVIDER_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

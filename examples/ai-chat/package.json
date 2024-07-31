@@ -1,4 +1,5 @@
 {
+  "name": "@cloudflare/example-ai-chat",
   "private": true,
   "scripts": {
     "start": "wrangler dev",
@@ -13,7 +14,6 @@
     "@cloudflare/workers-types": "^4.20240725.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "esbuild": "^0.23.0",
     "wrangler": "3.67.1"
   }
 }

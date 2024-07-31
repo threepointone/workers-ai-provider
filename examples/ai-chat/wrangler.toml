@@ -2,7 +2,7 @@ name = "workers-ai-chat"
 main = "src/server/index.ts"
 compatibility_date = "2024-07-31"
 
-assets = 'public'
+legacy_assets = 'public'
 
 [ai]
 binding = "AI"

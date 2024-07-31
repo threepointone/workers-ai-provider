@@ -141,10 +141,6 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
   ): Promise<Awaited<ReturnType<LanguageModelV1["doGenerate"]>>> {
     const { args, warnings } = this.getArgs(options);
 
-    if (warnings && warnings.length > 0) {
-      console.warn(warnings);
-    }
-
     const response = (await this.config.binding.run(args.model, {
       messages: args.messages,
     })) as { response: string };

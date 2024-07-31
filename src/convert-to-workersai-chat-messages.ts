@@ -64,8 +64,8 @@ export function convertToWorkersAIChatMessages(
               break;
             }
             default: {
-              const _exhaustiveCheck: never = part;
-              throw new Error(`Unsupported part: ${_exhaustiveCheck}`);
+              const exhaustiveCheck: never = part;
+              throw new Error(`Unsupported part: ${exhaustiveCheck}`);
             }
           }
         }

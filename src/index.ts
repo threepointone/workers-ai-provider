@@ -39,7 +39,7 @@ export function createWorkersAI(options: WorkersAISettings): WorkersAI {
     settings: WorkersAIChatSettings = {}
   ) =>
     new WorkersAIChatLanguageModel(modelId, settings, {
-      provider: "workerai.chat",
+      provider: "workersai.chat",
       binding: options.binding,
     });
 

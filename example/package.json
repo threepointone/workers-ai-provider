@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "ai": "^3.2.40",

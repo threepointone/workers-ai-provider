@@ -23,7 +23,7 @@ export default {
       });
       return result.toDataStreamResponse({
         headers: {
-          "Content-Type": "text/x-workers-ai",
+          "Content-Type": "text/x-unknown",
           "content-encoding": "identity",
           "transfer-encoding": "chunked",
         },

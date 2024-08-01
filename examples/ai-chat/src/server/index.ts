@@ -21,7 +21,13 @@ export default {
         model: workersai("@cf/meta/llama-3-8b-instruct"),
         messages: convertToCoreMessages(messages),
       });
-      return result.toDataStreamResponse();
+      return result.toDataStreamResponse({
+        headers: {
+          "Content-Type": "text/x-workers-ai",
+          "content-encoding": "identity",
+          "transfer-encoding": "chunked",
+        },
+      });
     }
 
     return new Response("Not Found!!", { status: 404 });

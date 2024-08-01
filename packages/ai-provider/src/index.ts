@@ -58,5 +58,5 @@ export function createWorkersAI(options: WorkersAISettings): WorkersAI {
 
   provider.chat = createChatModel;
 
-  return provider as WorkersAI;
+  return provider;
 }

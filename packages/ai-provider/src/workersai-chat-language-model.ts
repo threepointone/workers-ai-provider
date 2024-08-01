@@ -130,8 +130,8 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
       }
 
       default: {
-        const _exhaustiveCheck: never = type;
-        throw new Error(`Unsupported type: ${_exhaustiveCheck}`);
+        const exhaustiveCheck = type satisfies never;
+        throw new Error(`Unsupported type: ${exhaustiveCheck}`);
       }
     }
   }
@@ -141,18 +141,31 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
   ): Promise<Awaited<ReturnType<LanguageModelV1["doGenerate"]>>> {
     const { args, warnings } = this.getArgs(options);
 
-    const response = (await this.config.binding.run(args.model, {
+    const response = await this.config.binding.run(args.model, {
       messages: args.messages,
-    })) as { response: string };
+    });
+
+    if (response instanceof ReadableStream) {
+      throw new Error("This shouldn't happen");
+    }
 
     return {
       text: response.response,
-      finishReason: "stop",
+      // TODO: tool calls
+      // toolCalls: response.tool_calls?.map((toolCall) => ({
+      //   toolCallType: "function",
+      //   toolCallId: toolCall.name, // TODO: what can the id be?
+      //   toolName: toolCall.name,
+      //   args: JSON.stringify(toolCall.arguments || {}),
+      // })),
+      finishReason: "stop", // TODO: mapWorkersAIFinishReason(response.finish_reason),
       rawCall: { rawPrompt: args.messages, rawSettings: args },
       usage: {
+        // TODO: mapWorkersAIUsage(response.usage),
         promptTokens: 0,
         completionTokens: 0,
       },
+      warnings,
     };
   }
 
@@ -163,10 +176,14 @@ export class WorkersAIChatLanguageModel implements LanguageModelV1 {
 
     const decoder = new TextDecoder();
 
-    const response = (await this.config.binding.run(args.model, {
+    const response = await this.config.binding.run(args.model, {
       messages: args.messages,
       stream: true,
-    })) as ReadableStream;
+    });
+
+    if (!(response instanceof ReadableStream)) {
+      throw new Error("This shouldn't happen");
+    }
 
     return {
       stream: response.pipeThrough(
@@ -272,8 +289,8 @@ function prepareToolsAndToolChoice(
         tool_choice: "any",
       };
     default: {
-      const _exhaustiveCheck: never = type;
-      throw new Error(`Unsupported tool choice type: ${_exhaustiveCheck}`);
+      const exhaustiveCheck = type satisfies never;
+      throw new Error(`Unsupported tool choice type: ${exhaustiveCheck}`);
     }
   }
 }

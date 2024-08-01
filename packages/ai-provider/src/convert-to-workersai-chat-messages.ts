@@ -64,7 +64,7 @@ export function convertToWorkersAIChatMessages(
               break;
             }
             default: {
-              const exhaustiveCheck: never = part;
+              const exhaustiveCheck = part satisfies never;
               throw new Error(`Unsupported part: ${exhaustiveCheck}`);
             }
           }
@@ -96,8 +96,8 @@ export function convertToWorkersAIChatMessages(
         break;
       }
       default: {
-        const _exhaustiveCheck: never = role;
-        throw new Error(`Unsupported role: ${_exhaustiveCheck}`);
+        const exhaustiveCheck = role satisfies never;
+        throw new Error(`Unsupported role: ${exhaustiveCheck}`);
       }
     }
   }

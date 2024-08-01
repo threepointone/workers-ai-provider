@@ -1,5 +1,11 @@
 # workers-ai-provider
 
+## 0.0.8
+
+### Patch Changes
+
+- [`bc6408c`](https://github.com/threepointone/workers-ai-provider/commit/bc6408c907400d9a30532f69cfc9c2bcae4aa930) Thanks [@threepointone](https://github.com/threepointone)! - try another release
+
 ## 0.0.7
 
 ### Patch Changes

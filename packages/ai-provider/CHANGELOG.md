@@ -1,5 +1,11 @@
 # workers-ai-provider
 
+## 0.0.9
+
+### Patch Changes
+
+- [`deacf87`](https://github.com/threepointone/workers-ai-provider/commit/deacf87e184c8e358b29036e48b84e0a7fecc607) Thanks [@threepointone](https://github.com/threepointone)! - fix some types and buffering
+
 ## 0.0.8
 
 ### Patch Changes

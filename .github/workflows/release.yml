@@ -28,7 +28,7 @@ jobs:
       - id: changesets
         uses: changesets/action@v1
         with:
-          version: npx changeset version
+          version: ./.github/version-and-install.sh
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.WORKERS_AI_PROVIDER_GITHUB_TOKEN }}

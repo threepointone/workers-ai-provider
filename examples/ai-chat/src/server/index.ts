@@ -23,6 +23,8 @@ export default {
       });
       return result.toDataStreamResponse({
         headers: {
+          // we add these headers to ensure that the
+          // response is chunked and streamed
           "Content-Type": "text/x-unknown",
           "content-encoding": "identity",
           "transfer-encoding": "chunked",

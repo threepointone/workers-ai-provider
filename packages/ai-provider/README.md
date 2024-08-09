@@ -1,9 +1,6 @@
-# workers-ai-provider ⬡ ⤫ ▴
+# ⛅️ ✨ workers-ai-provider ✨ ⛅️
 
 A custom provider that enables [Workers AI](https://ai.cloudflare.com/)'s models for the [Vercel AI SDK](https://sdk.vercel.ai/).
-
-> [!CAUTION]
-> This project is in its experimental early stages and is not recommended for production use.
 
 ## Install
 
@@ -13,7 +10,7 @@ npm install workers-ai-provider
 
 ## Usage
 
-First, setup an AI binding in `wrangler.toml`:
+First, setup an AI binding in `wrangler.toml` in your WOrkers project:
 
 ```toml
 # ...
@@ -48,7 +45,15 @@ export default {
       ],
     });
 
-    return text.toTextStreamResponse();
+    return text.toTextStreamResponse({
+      headers: {
+        // add these headers to ensure that the
+        // response is chunked and streamed
+        "Content-Type": "text/x-unknown",
+        "content-encoding": "identity",
+        "transfer-encoding": "chunked",
+      },
+    });
   },
 };
 ```

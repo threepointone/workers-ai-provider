@@ -10,7 +10,7 @@ npm install workers-ai-provider
 
 ## Usage
 
-First, setup an AI binding in `wrangler.toml` in your WOrkers project:
+First, setup an AI binding in `wrangler.toml` in your Workers project:
 
 ```toml
 # ...
